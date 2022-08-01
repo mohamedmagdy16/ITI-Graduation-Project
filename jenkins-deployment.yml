@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: jenkins
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins
+
+  template:
+    metadata:
+      labels:
+        app: jenkins
+    spec:
+      containers:
+        - name: jenkins
+          image: jenkins/jenkins:lts
+          resources:
+            limits:
+              memory: "2Gi"
+              cpu: "1000m"
+            requests:
+              memory: "500Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /var/jenkins_home
+              name: jenkins-volume
+      volumes:
+      - name: jenkins-volume
+        # This GCE PD must already exist.
+        gcePersistentDisk:
+          pdName: my-data-disk
+          fsType: ext4
