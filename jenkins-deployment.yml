@@ -1,20 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
-
 metadata:
   name: jenkins
-
+  namespace: jenkins-namespace
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: jenkins
-
   template:
     metadata:
       labels:
         app: jenkins
     spec:
+      securityContext:
+            fsGroup: 1000 
+            runAsUser: 1000
       containers:
         - name: jenkins
           image: jenkins/jenkins:lts
@@ -26,13 +27,13 @@ spec:
               memory: "500Mi"
               cpu: "500m"
           ports:
-            - containerPort: 8080
+            - name: httpport
+              containerPort: 8080
           volumeMounts:
-            - mountPath: /var/jenkins_home
-              name: jenkins-volume
+            - name: jenkins-volume
+              mountPath: /var/jenkins_home         
       volumes:
-      - name: jenkins-volume
-        # This GCE PD must already exist.
-        gcePersistentDisk:
-          pdName: my-data-disk
-          fsType: ext4
+        - name: jenkins-volume
+          gcePersistentDisk:
+            pdName: my-data-disk
+            fsType: ext4
