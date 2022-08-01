@@ -29,7 +29,8 @@ resource "google_compute_instance" "bastion" {
 
   metadata_startup_script = <<EOF
   #!/bin/bash
-  yum install -y tinyproxy
+  sudo apt-get update -y
+  sudo apt-get install -y tinyproxy
   echo "Allow localhost"| tee -a /etc/tinyproxy/tinyproxy.conf
   systemctl restart tinyproxy
   EOF
