@@ -18,7 +18,7 @@ spec:
             runAsUser: 1000
       containers:
         - name: jenkins
-          image: jenkins/jenkins:lts
+          image: mohamedmagdy12/my-app:version2
           resources:
             limits:
               memory: "2Gi"
