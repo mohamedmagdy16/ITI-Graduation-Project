@@ -26,7 +26,8 @@ terraform apply --var-file infrastructure.tfvars
 ```
 
 # Deploying on Kubernetes cluster
-1. create deployment and service for jenkins in jenkins-namespace
-2. create deployment and service for application in application namespace
+1. Create deployment and service for jenkins in jenkins-namespace
+2. Create deployment and service for application in application namespace
 
-# 
+# Screen shots:
+![alt](./screenshots/1.png)
