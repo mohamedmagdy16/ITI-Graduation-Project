@@ -1,16 +1,30 @@
-# Provision infrastructure on GCP
-1. Create a GCP project
-2. Clone repo 
-3. edit project_id in infrastructure.tfvars with your project id and edit provider configuration 
+# Deploy backend application on kubernetes cluster using CI/CD jenkins pipeline using the following steps and high-level:
+1. Implement secure Kubernetes cluster
+2. Deploy and configure Jenkins on Kubernetes.
+3. Deploy backend application on Kubernetes using Jenkins pipeline.
 
 
-# provision the infrastructure on GCP
+# GCP Infrastructure Resources
+1. Create a network module
+2. Create a Kuberenetes Cluster 
+3. Create VM to access Kuberenetes Cluster and act as jenkins slave
+
+
+# Command to provision the infrastructure on GCP
 ```bash
 # initialize terraform
 terraform init
 
-# check plan
+# check using plan
 terraform plan --var-file infrastructure.tfvars
 
 # applying the plan 
 terraform apply --var-file infrastructure.tfvars
+
+```
+
+# Deploying on Kubernetes cluster
+1. create deployment and service for jenkins in jenkins-namespace
+2. create deployment and service for application in application namespace
+
+# 
