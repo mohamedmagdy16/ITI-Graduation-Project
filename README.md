@@ -29,6 +29,8 @@ terraform apply --var-file infrastructure.tfvars
 1. Create deployment and service for jenkins in jenkins-namespace
 2. Create deployment and service for application in application namespace
 
-# Screen shots:
+# Screenshots:
+# figure 1
 ![alt](./screenshots/1.png)
+# figure 2
 ![alt](./screenshots/2.png)
