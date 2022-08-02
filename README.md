@@ -34,3 +34,5 @@ terraform apply --var-file infrastructure.tfvars
 ![alt](./screenshots/1.png)
 # figure 2
 ![alt](./screenshots/2.png)
+# figure 3
+![alt](./screenshots/3.png)
