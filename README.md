@@ -1,3 +1,5 @@
+# ITI Graduation Project
+
 # Deploy backend application on kubernetes cluster using CI/CD jenkins pipeline using the following steps and high-level:
 1. Implement secure Kubernetes cluster
 2. Deploy and configure Jenkins on Kubernetes.
@@ -10,7 +12,7 @@
 3. Create VM to access Kuberenetes Cluster and act as jenkins slave
 
 
-# Command to provision the infrastructure on GCP
+# Commands to provision the infrastructure on GCP
 ```bash
 # initialize terraform
 terraform init
