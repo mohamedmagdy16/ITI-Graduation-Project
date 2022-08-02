@@ -1,0 +1,39 @@
+pipeline {
+    agent {label 'slave'}
+    
+
+    stages 
+    {
+        stage('git checkout') {
+            steps {
+                git branch: 'main', 
+                changelog: false, 
+                poll: false, 
+                url: 'https://github.com/mohamedmagdy16/ITI-GP-App-Deployment'
+            }
+        }
+        
+        stage('build') {
+            steps {
+                sh 'docker build -f dockerfile . -t mohamedmagdy12/nodejs:latest'
+            }
+        }
+        
+        stage('artifact') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'pass', usernameVariable: 'username')]){
+                sh 'sudo docker login -u ${username} -p ${pass}'
+                sh 'sudo docker push mohamedmagdy12/nodejs:latest'
+            }
+          }
+        }
+        
+        stage('deploy') {
+            steps {
+                //sh 'kubectl create namespace application'
+                sh 'kubectl apply -f ./app-deployment.yml -n application'
+                sh 'kubectl apply -f ./app-service.yml -n application'
+            }
+          }
+        }
+   }
