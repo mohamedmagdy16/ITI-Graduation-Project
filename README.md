@@ -41,6 +41,7 @@ terraform apply --var-file infrastructure.tfvars
 # figure 5
 ![alt](./screenshots/5.png)
 # figure 6
+# APP URL: http://35.238.89.130:3000/
 ![alt](./screenshots/6.png)
 # figure 7
 ![alt](./screenshots/7.png)
